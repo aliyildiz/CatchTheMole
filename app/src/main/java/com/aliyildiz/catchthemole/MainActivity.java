@@ -1,5 +1,6 @@
 package com.aliyildiz.catchthemole;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         imageArray = new ImageView[]{ımageView1, ımageView2, ımageView3, ımageView4, ımageView5, ımageView6, ımageView7, ımageView8, ımageView9, ımageView10, ımageView11, ımageView12, ımageView13, ımageView14, ımageView15, ımageView16};
 
+        hideImages();
+
         score=0;
 
         new CountDownTimer(30000,1000){
@@ -78,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 timeText=findViewById(R.id.textTime);
                 timeText.setText("Game Over!");
+                handler.removeCallbacks(runnable);
+                imageArray[i].setVisibility(View.INVISIBLE);
+                Button restartb = findViewById(R.id.button2);
+                restartb.setVisibility(View.VISIBLE);
             }
         }.start();
     }
@@ -88,6 +95,35 @@ public class MainActivity extends AppCompatActivity {
         score++;
         scoreText.setText("Score : "+score);
 
+    }
+
+    public void hideImages() {
+
+        handler = new Handler();
+
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                for (ImageView image : imageArray) {
+                    image.setVisibility(View.INVISIBLE);
+                }
+
+                Random r = new Random();
+                i = r.nextInt(16-0);
+                imageArray[i].setVisibility(View.VISIBLE);
+                handler.postDelayed(this, 500);
+
+            }
+        };
+
+        handler.post(runnable);
+
+    }
+
+    public void restartActivity(View view)
+    {
+        Intent intent= new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 }
