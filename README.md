@@ -12,4 +12,4 @@ You need to install caththemole.apk or CatchTheMole\app\build\outputs\apk\debug\
 
 ##License
 
-This project is licensed under the **GNU General Public License v3.0** - see the [LICENSE.md](https://github.com/aliyildiz/CatchTheMole/LICENSE) file for details.
+This project is licensed under the **GNU General Public License v3.0** - see the [LICENSE.md](https://github.com/aliyildiz/CatchTheMole/blob/master/LICENSE) file for details.
